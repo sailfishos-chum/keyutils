@@ -1,0 +1,46 @@
+Name: keyutils
+Summary: tools to control the key management system of the Linux kernel
+Version: 1.6.3
+Release: 0
+Group: Development/Libraries
+License: GPLv2
+Sources:
+    - '%{name}-%{version}.tar.gz'
+URL: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils
+SCM: git://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+Description: |
+    These tools are used to control the key management system built into the
+    Linux kernel.
+
+    %if "%{?vendor}" == "chum"
+    PackagerName: nephros
+    Type: console-application
+    Categories:
+      - System
+      - Library
+    %endif
+PkgBR:
+    - make
+Configure: none
+Files:
+  - '/sbin/*'
+  - '/bin/*'
+  - '%{_libdir}/*.so.*'
+  - '%dir %{_datadir}/%{name}'
+  - '%{_sysconfdir}/*'
+SubPackages:
+  - Name:  doc
+    Summary: Documentation files for %{name}
+    Group: Documentation
+    Files:
+      - '%{_mandir}/*/*'
+  - Name:  devel
+    Summary: Developmemt files for %{name}
+    Group: Development/Libraries
+    Files:
+      - '%{_datadir}/%{name}/*-debug.sh'
+      - '%{_includedir}/*'
+      - '%{_libdir}/*.so'
+      - '%{_libdir}/*.a'
+      # for SFOS < 3.4, otherwise rpmlint errors out
+      - '+%attr(0644,root,root) %{_libdir}/pkgconfig/*'

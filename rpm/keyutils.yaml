@@ -13,14 +13,16 @@ Description: |
     Linux kernel.
 
     %if "%{?vendor}" == "chum"
-    PackagerName: nephros
     Type: console-application
     Categories:
       - System
       - Library
+    Custom:
+      PackagingRepo: https://github.com/sailfishos-chum/keyutils
     %endif
 PkgBR:
     - make
+SetupOptions: -q -n %{name}-%{version}/upstream
 Configure: none
 Files:
   - '/sbin/*'
@@ -43,4 +45,4 @@ SubPackages:
       - '%{_libdir}/*.so'
       - '%{_libdir}/*.a'
       # for SFOS < 3.4, otherwise rpmlint errors out
-      - '+%attr(0644,root,root) %{_libdir}/pkgconfig/*'
+      - '%attr(0644,root,root) %{_libdir}/pkgconfig/*'

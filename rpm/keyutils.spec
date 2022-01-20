@@ -26,11 +26,12 @@ These tools are used to control the key management system built into the
 Linux kernel.
 
 %if "%{?vendor}" == "chum"
-PackagerName: nephros
 Type: console-application
 Categories:
   - System
   - Library
+Custom:
+  PackagingRepo: https://github.com/sailfishos-chum/keyutils
 %endif
 
 
@@ -51,7 +52,7 @@ Requires:   %{name} = %{version}-%{release}
 %{summary}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
 # >> setup
 # << setup

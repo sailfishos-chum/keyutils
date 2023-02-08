@@ -13,12 +13,13 @@ Description: |
     Linux kernel.
 
     %if "%{?vendor}" == "chum"
-    Type: console-application
+    PackagerName: nephros
     Categories:
       - System
       - Library
     Custom:
       PackagingRepo: https://github.com/sailfishos-chum/keyutils
+      Repo: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils
     %endif
 PkgBR:
     - make

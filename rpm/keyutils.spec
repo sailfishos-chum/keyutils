@@ -26,7 +26,7 @@ These tools are used to control the key management system built into the
 Linux kernel.
 
 %if "%{?vendor}" == "chum"
-Type: console-application
+PackagerName: nephros
 Categories:
   - System
   - Library
